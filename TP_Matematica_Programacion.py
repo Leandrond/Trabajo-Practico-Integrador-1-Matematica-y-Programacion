@@ -49,3 +49,47 @@ inconsistentes = setC - (setA | setB)
 
 print("Usuarios en C pero no en A U B:", inconsistentes)
 print()
+
+#   --- Parte B: Lógica proporcional ---
+
+# FUNCION LOGICA
+def usuario_critico(usuario):
+
+    p = usuario in A # Usuario activo en API
+    q = usuario in B # Usuario activo en Web
+    r = usuario in C # Usuario con errores
+    return r and (p or q) # Me devuelve usuario crítico si tiene errores y está activo en al menos una plataforma
+
+# CLASIFICACIÓN
+usuarios = set(A+B+C) # Todos los usuarios únicos
+
+print("Clasificación de usuarios:")
+
+for usuario in usuarios:
+    if usuario_critico(usuario): # Si el usuario es crítico, lo clasifico como tal
+        print(usuario,"-> Crítico")
+    else:
+        print(usuario,"-> No crítico")
+
+print()
+
+#   --- Parte C: Interpretacion ---
+
+#   ¿Qué tipo de usuarios representa mayor riesgo?
+#   Los usuarios críticos representan un mayor riesgo, ya que tienen errores (r es verdadero) y
+#   están activos en al menos una plataforma (p o q es verdadero).
+#   Esto significa que estos usuarios pueden estar experimentando problemas que afectan su experiencia, lo
+#   que podría llevar a una mayor insatisfacción y abandono de la plataforma. Además, si estos usuarios 
+#   son activos en ambas plataformas, el impacto negativo podría ser aún mayor, ya que podrían estar 
+#   enfrentando problemas en ambos entornos.
+
+#   ¿Qué significa que el usuario este en C pero no en A U B?
+#   Significa que el sistema detectó errores asociados a un usuario que no aparece registrado utilizando
+#   ninguna plataforma. Puede representar intentos de acceso ilegitimos, errores de logging,
+#   inconsistencias en la base de datos, problemas de sincronizacion entre sistemas, o incluso actividades
+#   maliciosas. 
+
+#  ¿Qué decisiones se deberian tomar como equipo programador?
+#   Revisar logss del usuario 109. Validar autenticaciones. Mejorar controles de consistencia. Implementar
+#   alertas automaticas. Analizar usuarios críticos para reducir errores.
+
