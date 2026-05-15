@@ -19,6 +19,6 @@ Documentación: El proyecto incluye un informe técnico en PDF y la defensa oral
 
 Integrantes del Grupo
     -Berrino Joaquín
-    -DemarchiLeandro
+    -Demarchi Leandro
     -Dominguez Leo Mariano
     -Fernandez Guadalupe Candela
